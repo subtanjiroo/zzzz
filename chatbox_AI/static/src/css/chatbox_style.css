@@ -1,0 +1,194 @@
+#chatbox {
+    background-color: #f0f8ff;
+    width: 100% !important;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 8% 70% 10%;
+    justify-items: center;
+    align-items: end;
+}
+#CHAT_INPUT{
+    display: grid;
+    background-color: rgba(230, 230, 230, 0.822);
+    border-radius: 30px;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 5% 80% 15%;
+    grid-template-rows: 100%;
+    margin: 5px;
+    height: 4em;
+    width: 90%;
+    place-items: center;
+    max-height: 150px;
+}
+
+#message_input {
+    width: 100%;
+    max-height: 120px; /* Chiều cao tối đa của textarea */
+    min-height: 30px;  /* Chiều cao tối thiểu của textarea */
+    height: 30px;      /* Chiều cao tự động điều chỉnh */
+    background-color: rgba(233, 233, 233, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+    margin: 10px;
+    overflow-y: auto;  /* Thêm thanh cuộn khi nội dung vượt quá chiều cao tối đa */
+    
+}
+
+#upload_button{
+    color: rgb(0, 0, 0);
+    border: none;
+    background: none;
+    border-radius: 15px;
+    width: fit-content;
+    font-size: 30px;
+    margin-left: 5px;
+}
+#send_button {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 500px;
+    padding: 10px 10px;
+    border: none;
+    margin: 5px;
+    width: 80%;
+}
+
+#messages {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.server_message{
+    padding: 10px 15px; /* Khoảng cách bên trong cho mỗi tin nhắn */
+    background-color: rgb(35, 32, 43);
+    border: 1px rgb(158, 158, 158) solid;
+    border-radius: 20px;
+    color: white;
+    max-width: 80%; /* Chiều rộng tối đa cho mỗi tin nhắn */
+    word-wrap: break-word; /* Ngắt dòng cho tin nhắn dài */
+    align-self: flex-start; /* Căn lề phải cho tin nhắn gửi */
+    margin-left: 10px;
+
+}
+.client_message{
+    padding: 10px 15px; /* Khoảng cách bên trong cho mỗi tin nhắn */
+    background-color: rgba(230, 230, 230, 0.911);
+    border: 1px black solid;
+    border-radius: 20px;
+    color: rgb(51, 51, 51);
+    max-width: 80%; /* Chiều rộng tối đa cho mỗi tin nhắn */
+    word-wrap: break-word; /* Ngắt dòng cho tin nhắn dài */
+    align-self: flex-end; /* Căn lề trái cho tin nhắn nhận */
+    margin-right: 10px;
+}
+/* Slide Menu and interface*/
+#chatbox_wrapper {
+    position: fixed; /* Để nó luôn ở vị trí cố định trong màn hình */
+    top:45px;         /* Đặt nó ở vị trí đầu màn hình */
+    left: 0;        /* Đặt nó ở bên trái màn hình */
+    width: 100%;    /* Chiếm 100% chiều rộng */
+    height: 100%;   /* Chiếm 100% chiều cao */
+    overflow-y: auto; /* Ẩn thanh cuộn nếu có nội dung tràn */
+    overflow-x: hidden;
+    z-index: 999;   /* Đảm bảo nó nằm trên cùng */
+    background-color: #fff; /* Màu nền (có thể điều chỉnh theo nhu cầu) */
+    display: flex;
+
+}
+
+
+#sidebar {
+    width: 0; /* Sidebar ẩn mặc định */
+    height: 100%;
+    background-color: #111;
+    overflow: hidden; /* Ẩn nội dung nếu sidebar bị ẩn */
+    transition: width 0.3s; /* Hiệu ứng chuyển động */
+    white-space: nowrap;
+}
+
+#sidebar.show {
+    width: 20vw; /* Sidebar mở rộng khi được bật */
+    height: 100%;
+}
+
+#sidebar_toggle {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    height: 3em;
+}
+#sidebar_toggle2 {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    height: 3em;
+}
+#task_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task_list li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    color: #ffffff;
+    transition: background 0.3s, padding-left 0.3s; /* Hiệu ứng khi hover */
+    cursor: pointer;
+}
+
+#task_list li:hover {
+    background-color: #575757;
+    padding-left: 15px; /* Dịch chuyển sang phải khi hover */
+    color: black;
+}
+.sidebar2{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+.hidden{
+    display: none;
+}
+
+
+
+/* Odoo Interface*/
+.o_main_navbar {
+    background-color: #000000 !important;  /* change color the navigation bar */
+}
+.o_control_panel{
+    display: none !important;   /* hide the task bar*/
+}
+.o_form_sheet{
+    border: none !important;
+    background-color: white !important;
+
+}
+.o_form_sheet_bg{
+    background-color: white !important;
+}
+.o_inner_group{
+    position: absolute;
+    justify-content: center;
+}
+.o_form_renderer{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body{
+    padding: 0 !important;
+}
+
