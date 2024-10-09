@@ -21,6 +21,8 @@
     width: 90%;
     place-items: center;
     max-height: 150px;
+    position: relative;
+    top: 20px;
 }
 
 
