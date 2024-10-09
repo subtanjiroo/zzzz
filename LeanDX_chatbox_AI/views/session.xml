@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_leandx_ai_session_tree" model="ir.ui.view">
+        <field name="name">leandx.ai.session.tree</field>
+        <field name="model">leandx.ai.session</field>
+        <field name="arch" type="xml">
+            <tree string="Chatbox Sessions">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_leandx_ai_session_form" model="ir.ui.view">
+        <field name="name">leandx.ai.session.form</field>
+        <field name="model">leandx.ai.session</field>
+        <field name="arch" type="xml">
+            <form string="Chatbox Sessions">
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="name"/>
+                        <field name="user_id"/>
+                    </group>
+                    <field name="chat_message_ids">
+                        <tree string="Chat Messages">
+                            <field name="role"/>
+                            <field name="message"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_leandx_ai_session" model="ir.actions.act_window">
+        <field name="name">Chatbox Sessions</field>
+        <field name="res_model">leandx.ai.session</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_leandx_ai_session_tree"/>
+    </record>
+</odoo> 
