@@ -8,7 +8,10 @@ class CustomField extends Component {
         <div id="chatbox_wrapper">
             <!-- Sidebar -->
             <div id="sidebar" t-att-class="state.showSidebar ? 'show' : ''">
-                <div id="sidebar_toggle" t-on-click="toggleSidebar">☰</div>
+                <div class="SibarMenu">
+                    <div id="sidebar_toggle" t-on-click="toggleSidebar">☰</div>
+                    <div id="New_session" t-on-click="NewSession">+</div>
+                </div>
                 <ul id="task_list">
                     <li t-on-mouseenter="handleMouseEnter" t-on-click="HistoryBar" t-on-mouseleave="handleMouseLeave" t-foreach="state.tasks" t-as="task" t-key="task">
                         <span t-esc="task"></span>
@@ -25,9 +28,17 @@ class CustomField extends Component {
                     <!-- Các tin nhắn sẽ được thêm vào đây -->
                 </div>
                 <div id="CHAT_INPUT">
+                    <div class="DRD">
+                    <!-- Dropdown Upload Options -->
+                    <div id="upload_dropdown" t-att-class="state.showDropdown ? 'show' : 'hidden'">
+                        <div class="upload_box">Testing upload file 1</div>
+                        <div class="upload_box">Testing upload file 2</div>
+                        <div class="upload_box">Testing upload file 2</div>
+                    </div>
                     <button name="Upload" type="button" id="upload_button" t-on-click="UploadHandle">
                         <i class="fa-solid fa-paperclip"></i>
-                    </button>                    
+                    </button>
+                    </div>
                     <textarea t-on-keydown="handleKeyDown" id="message_input" placeholder="Type your message..." t-model="messageState.message" t-ref="messageInput"></textarea>
                     <button name="send-message" type="button" id="send_button" t-on-click="sendMessage">Send</button>
                 </div>
@@ -38,6 +49,7 @@ class CustomField extends Component {
     setup() {
         this.state = useState({
             showSidebar: true,
+            showDropdown: false, // Trạng thái hiển thị của dropdown
             tasks: [] // Sử dụng state để lưu danh sách task
         });
         this.messageState = useState({ message: "" }); // State lưu trữ tạm thời tin nhắn
@@ -64,7 +76,9 @@ class CustomField extends Component {
     toggleSidebar() {
         this.state.showSidebar = !this.state.showSidebar;
     }
-
+    NewSession(){
+        //New session
+    }
     handleMouseEnter(event) {
         event.target.style.backgroundColor = '#f0f0f0'; // Hiển thị hiệu ứng khi hover vào
     }
@@ -98,7 +112,8 @@ class CustomField extends Component {
     }
 
     async UploadHandle() {
-        // Logic Upload File
+        // Hiển thị hoặc ẩn dropdown khi nhấn vào nút Upload
+        this.state.showDropdown = !this.state.showDropdown;
     }
 
     async sendMessage() {
